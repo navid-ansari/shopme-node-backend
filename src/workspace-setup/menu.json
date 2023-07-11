@@ -1,0 +1,32 @@
+[
+  {
+    "menuPath": "/",
+    "menuLabel": "Home",
+    "menuName": "HOME",
+    "childMenu": []
+  },
+  {
+    "menuPath": "/sign-up",
+    "menuLabel": "Sign Up",
+    "menuName": "SIGNUP",
+    "childMenu": []
+  },
+  {
+    "menuPath": "/sign-in",
+    "menuLabel": "Sign In",
+    "menuName": "SIGNIN",
+    "childMenu": []
+  },
+  {
+    "menuPath": "/user-list",
+    "menuLabel": "User List",
+    "menuName": "USERLIST",
+    "childMenu": []
+  },
+  {
+    "menuPath": "/sign-out",
+    "menuLabel": "Sign Out",
+    "menuName": "SIGNOUT",
+    "childMenu": []
+  }
+]
