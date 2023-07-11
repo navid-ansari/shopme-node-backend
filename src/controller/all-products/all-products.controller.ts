@@ -6,7 +6,7 @@ import { log } from '../../logger'
 
 // service
 import { userList } from '../../service'
-import { allProductsService } from '../../service/allproducts/allproducts.service'
+import { allProductsService } from '../../service/all-products/all-products.service'
 
 export const allProductsController = async (req: Request, res: Response) => {
   try {

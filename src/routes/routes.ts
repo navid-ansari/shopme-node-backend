@@ -20,7 +20,7 @@ import {
   updateUserHandler,
   deleteUserHandler
 } from '../controller'
-import { allProductsController } from '../controller/allproducts/allproducts.controller'
+import { allProductsController } from '../controller/all-products/all-products.controller'
 import { productDetailsController } from '../controller/product-details/product-details.controller'
 
 /**
