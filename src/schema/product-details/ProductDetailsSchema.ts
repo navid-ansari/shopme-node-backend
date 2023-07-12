@@ -1,0 +1,44 @@
+import mongoose, { Schema, model, connect, Types } from 'mongoose'
+
+const ProductDetailsSchema = new Schema<any>({
+  title: {
+    type: String
+  },
+  price: {
+    type: Number
+  },
+  description: {
+    type: String
+  },
+  category: {
+    type: String
+  },
+  image: {
+    type: String
+  },
+  rating: {
+    rate: {
+      type: Number
+    },
+    count: {
+      type: Number
+    }
+  }
+})
+
+// duplicate _id to id field in model schema response
+ProductDetailsSchema.virtual('id').get(function () {
+  return this._id.toHexString()
+})
+ProductDetailsSchema.set('toJSON', {
+  virtuals: true
+})
+
+// log duplicated id field in console.log() mehod
+ProductDetailsSchema.set('toObject', { virtuals: true })
+
+module.exports = mongoose.model(
+  'ProductDetailsModel',
+  ProductDetailsSchema,
+  'SHOPME_ALL_PRODUCTS'
+)
