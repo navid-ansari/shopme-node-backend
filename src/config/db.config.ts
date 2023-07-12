@@ -19,8 +19,9 @@ export const connectDB = async () => {
       log.info('MongoDB disconnected..')
       //console.log(mongoose.connection.readyState) //logs 0
     })*/
+    //mongodb+srv://navid:navid@cluster0.wl6kc.mongodb.net/UMSR?retryWrites=true&w=majority
     const mongodb_uri =
-      'mongodb+srv://shopmeuser:shopmeuser@shopme-cluster.oai0bsj.mongodb.net/'
+      'mongodb+srv://shopmeuser:shopmeuser@shopme-cluster.oai0bsj.mongodb.net/SHOPME_DB'
     //await mongoose.connect(process.env.MONGO_CONNECTION_URI, {
     await mongoose.connect(mongodb_uri, {
       useNewUrlParser: true,

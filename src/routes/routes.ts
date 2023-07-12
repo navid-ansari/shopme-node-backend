@@ -18,10 +18,10 @@ import {
   viewUserHandler,
   editUserHandler,
   updateUserHandler,
-  deleteUserHandler
+  deleteUserHandler,
+  allProductsController,
+  productDetailsController
 } from '../controller'
-import { allProductsController } from '../controller/all-products/all-products.controller'
-import { productDetailsController } from '../controller/product-details/product-details.controller'
 
 /**
  * @swagger
