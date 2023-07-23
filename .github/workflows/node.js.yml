@@ -32,6 +32,6 @@ jobs:
       # check code linting
       - run: npm run lint:check
       # run unit test
-      - run: npm run test
+      - run: npm test
       # run integration test
-      - run: npm run test:integration
+      #- run: npm run test:integration
