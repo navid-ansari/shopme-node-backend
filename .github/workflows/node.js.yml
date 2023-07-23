@@ -47,3 +47,13 @@ jobs:
       # run unit test
       - run: npm test
         name: Run Unit Tests
+
+      # generate unit test coverage
+      - name: Unit Tests Coverage Report
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          test-script: npm run test:coverage
+          annotations: none
+          # This will attach comment to a PR and generate markdown output.
+          output: comment, report-markdown
+          github-token: ${{ secrets.GITHUB_TOKEN }}
