@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 import { MongoMemoryServer } from 'mongodb-memory-server'
-import { log } from '../../src/logger'
+import { log } from '../logger'
 
 // Connect to mock memory db.
 let mongod: any

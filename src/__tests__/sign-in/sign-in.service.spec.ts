@@ -1,5 +1,5 @@
 const request = require('supertest')
-import { createServer } from '../../../src/initializer/create-server'
+import { createServer } from '../../initializer/create-server'
 import { connect, closeDatabase, clearDatabase } from '../test-db-config'
 
 const signInSchema = require('../../../src/schema/signin/SignInSchema')
