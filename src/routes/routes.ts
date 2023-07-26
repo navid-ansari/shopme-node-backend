@@ -39,8 +39,10 @@ const routes = (app: Express) => {
    *       application/json:
    *        schema:
    *         $ref: '#/components/schemas/Healthcheck'
+   *     404:
+   *      description: Not Found
    *     500:
-   *      description: 500 Internal Server Error
+   *      description: Internal Server Error
    */
   app.get('/api/healthcheck', healthcheckController)
 
@@ -61,6 +63,8 @@ const routes = (app: Express) => {
    *           type: array
    *           items:
    *            $ref: '#/components/schemas/Product'
+   *       404:
+   *        description: Not Found
    *       500:
    *        description: Internal Server Error
    */
@@ -91,6 +95,12 @@ const routes = (app: Express) => {
    *         application/json:
    *          schema:
    *           $ref: '#/components/schemas/Product'
+   *       404:
+   *        description: Product not found
+   *        content:
+   *         application/json:
+   *          schema:
+   *           $ref: '#/components/schemas/Product404'
    *       500:
    *        description: Internal Server Error
    */
@@ -175,6 +185,14 @@ const routes = (app: Express) => {
  *     rating:
  *       rate: 3.2
  *       count: 200
+ *   Product404:
+ *    type: object
+ *    properties:
+ *     message:
+ *      type: string
+ *      description: Product not found error message
+ *    example:
+ *     message: Product not found
  */
 
 export { routes }
