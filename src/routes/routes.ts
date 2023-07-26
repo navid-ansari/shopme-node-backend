@@ -96,7 +96,7 @@ const routes = (app: Express) => {
    */
   app.get('/api/productDetails/:id', productDetailsController)
 
-  /*// menu
+  // menu
   app.get('/api/menu', getMenuHandler)
 
   //app.post('/api/signup', validateReq(signInSchema), createSignUpHandler)
@@ -120,7 +120,7 @@ const routes = (app: Express) => {
   app.put('/api/updateuser/:id', updateUserHandler)
 
   // delete
-  app.delete('/api/delete/:id', deleteUserHandler)*/
+  app.delete('/api/delete/:id', deleteUserHandler)
 }
 
 /**
