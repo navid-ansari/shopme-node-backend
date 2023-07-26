@@ -20,7 +20,8 @@ import {
   viewUserHandler,
   editUserHandler,
   updateUserHandler,
-  deleteUserHandler
+  deleteUserHandler,
+  rolesController
 } from '../controller'
 
 const routes = (app: Express) => {
@@ -111,11 +112,15 @@ const routes = (app: Express) => {
 
   //app.post('/api/signup', validateReq(signInSchema), createSignUpHandler)
 
-  // sign in
-  app.post('/api/signin', signInController) //validateReq(signInSchema),
+  // roles master
+
+  app.get('/api/roles', rolesController)
 
   // sign up
   app.post('/api/signup', signUpController)
+
+  // sign in
+  app.post('/api/signin', signInController) //validateReq(signInSchema),
 
   // user list
   app.get('/api/userList', userListHandler)
