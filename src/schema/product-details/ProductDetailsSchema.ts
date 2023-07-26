@@ -31,7 +31,11 @@ ProductDetailsSchema.virtual('id').get(function () {
   return this._id.toHexString()
 })
 ProductDetailsSchema.set('toJSON', {
-  virtuals: true
+  virtuals: true,
+  transform: function (doc, ret) {
+    ret.id = ret._id
+    delete ret._id
+  }
 })
 
 // log duplicated id field in console.log() mehod

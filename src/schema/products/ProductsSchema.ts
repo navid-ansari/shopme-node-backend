@@ -27,11 +27,15 @@ const ProductsSchema = new Schema<any>({
 })
 
 // duplicate _id to id field in model schema response
-ProductsSchema.virtual('id').get(function () {
+/*ProductsSchema.virtual('id').get(function () {
   return this._id.toHexString()
-})
+})*/
 ProductsSchema.set('toJSON', {
-  virtuals: true
+  virtuals: true,
+  transform: function (doc, ret) {
+    ret.id = ret._id.toHexString() // transform id to hexstring(string) from mongoose id object
+    delete ret._id // delete the _id property from the response
+  }
 })
 
 // log duplicated id field in console.log() mehod
