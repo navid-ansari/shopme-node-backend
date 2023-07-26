@@ -1,4 +1,4 @@
-import { testApi } from './test/test.service'
+import { healthcheckService } from './healthcheck/healthcheck.service'
 import { getMenu } from './menu/menu.service'
 import { signInUser } from './sign-in/sign-in.service'
 import { signUpUser } from './sign-up/sign-up.service'
@@ -9,7 +9,7 @@ import { updateUser } from './update-user/update-user.service'
 import { deleteUser } from './delete/delete.service'
 
 export {
-  testApi,
+  healthcheckService,
   getMenu,
   signInUser,
   signUpUser,

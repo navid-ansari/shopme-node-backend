@@ -1,5 +1,7 @@
-import express, { Request, Response, NextFunction } from 'express' // npm i @types/express
-const dotenv = require('dotenv')
+// app inititlized
+import { createServer } from './src/initializer/create-server'
+
+import { routes } from './src/routes/routes'
 
 // logger
 import { log } from './src/logger'
@@ -9,7 +11,7 @@ import { connectDB } from './src/config'
 
 // swagger docs
 import { swaggerDocs } from './src/swagger/swagger'
-import { createServer } from './src/initializer/create-server'
+
 //import { NextFunction } from 'webpack-dev-middleware'
 
 const app = createServer()
@@ -17,7 +19,8 @@ const PORT = process.env.PORT || 5001
 app.listen(PORT, async () => {
   log.info(`server started on port ${PORT} with typescript`)
   await connectDB()
-  await swaggerDocs(app)
+  //await routes(app)
+  await swaggerDocs(app, Number(PORT))
 })
 
 //module.exports = app
