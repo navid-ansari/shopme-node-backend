@@ -6,7 +6,7 @@ import { Request, response, Response } from 'express'
 // mocked node response
 import { getMockRes } from '../../types/test/mock-response'
 
-import { signUpHandler } from './sign-up.controller'
+import { signUpController } from './sign-up.controller'
 describe('sign up controller', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -38,7 +38,7 @@ describe('sign up controller', () => {
       }
     }
 
-    await signUpHandler(mockRequest as Request, mockResponse as Response)
+    await signUpController(mockRequest as Request, mockResponse as Response)
     expect(mockResponse.status).toHaveBeenCalledWith(400)
     expect(mockResponse.json).toHaveBeenCalledWith({
       error: 'missing username in request'

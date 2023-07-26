@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { signInHandler } from './sign-In.controller'
-import { signInUser } from '../../service/sign-in/sign-in.service'
+import { signInController } from './sign-In.controller'
+import { signInService } from '../../service/sign-in/sign-in.service'
 import { getMockRes } from '../../types/test/mock-response'
 import { validateSignInReq } from '../validator/signin-request-validator'
 import { InputError } from '../../lib/errors'

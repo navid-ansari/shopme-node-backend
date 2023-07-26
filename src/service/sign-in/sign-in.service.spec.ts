@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
 // service
-import { signInUser } from './sign-in.service'
+import { signInService } from './sign-in.service'
 
 // schema
 const signInSchema = require('../../schema/signin/SignInSchema')
@@ -37,7 +37,7 @@ describe('validate sign in service', () => {
     }
     const mockResponse = getMockRes()
     signInSchema.findOne.mockResolvedValue(null)
-    await signInUser(mockRequest as Request, mockResponse as Response)
+    await signInService(mockRequest as Request, mockResponse as Response)
     expect(mockResponse.status).toHaveBeenCalledWith(404)
     expect(mockResponse.json).toHaveBeenCalledWith({
       message: 'User not found'
@@ -57,7 +57,7 @@ describe('validate sign in service', () => {
     const mockedUser = MockedUser({ email, password })
     signInSchema.findOne.mockResolvedValue(mockedUser)
     mocked(comparePassword).mockResolvedValueOnce(false)
-    await signInUser(mockRequest as Request, mockResponse as Response)
+    await signInService(mockRequest as Request, mockResponse as Response)
     expect(mockResponse.status).toHaveBeenCalledWith(401)
     expect(mockResponse.json).toHaveBeenCalledWith({
       message: 'Password is incorrect'
@@ -78,7 +78,7 @@ describe('validate sign in service', () => {
     const userFixture = UserFixture({ email, password })
     signInSchema.findOne.mockResolvedValue(mockedUser)
     mocked(comparePassword).mockResolvedValueOnce(true)
-    await signInUser(mockRequest as Request, mockResponse as Response)
+    await signInService(mockRequest as Request, mockResponse as Response)
     expect(mockedUser).toEqual(userFixture)
     expect(mockResponse.status).toHaveBeenCalledWith(200)
     expect(mockResponse.json).toHaveBeenCalledWith(mockedUser)

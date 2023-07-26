@@ -4,7 +4,7 @@ import { Request, Response } from 'express'
 import { log } from '../../logger'
 
 // service
-import { signInUser } from '../../service'
+import { signInService } from '../../service'
 
 // request validator
 import { validateSignInReq } from '../validator/signin-request-validator'
@@ -12,12 +12,11 @@ import { validateSignInReq } from '../validator/signin-request-validator'
 // error
 import { errorResponse } from '../../lib/errors'
 
-export const signInHandler = async (req: Request, res: Response) => {
-  //log.info('Sign In Controller Working')
+export const signInController = async (req: Request, res: Response) => {
   const { email, password } = req.body
   try {
     validateSignInReq({ email, password })
-    const user = await signInUser(req, res)
+    const user = await signInService(req, res)
     return user
   } catch (e: any) {
     //log.error('Error In Sign In Controller')

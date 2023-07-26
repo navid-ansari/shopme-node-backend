@@ -3,7 +3,6 @@ import { errorResponse } from '../../lib/errors'
 import { log } from '../../logger'
 
 export const healthcheckService = async (req: Request, res: Response) => {
-  //log.info('Test Controller Working')
   try {
     if (req) {
       return res
@@ -13,6 +12,7 @@ export const healthcheckService = async (req: Request, res: Response) => {
   } catch (error: any) {
     //console.log(error)
     log.error(`Error in Healthcheck Service: ${error}`)
-    errorResponse(res, error)
+    //errorResponse(res, error)
+    return res.status(500).end()
   }
 }

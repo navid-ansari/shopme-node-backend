@@ -5,11 +5,11 @@ import { errorResponse } from '../../lib/errors'
 import { log } from '../../logger'
 
 // service
-import { signUpUser } from '../../service'
+import { signUpService } from '../../service'
 import { hashPassword } from '../../util/password-hashing/hash-password'
 import { validateSignUp } from '../validator/signup-validator'
 
-export const signUpHandler = async (req: Request, res: Response) => {
+export const signUpController = async (req: Request, res: Response) => {
   try {
     /*return res.send(omit(user.toJSON(), "password"));*/
     // return await signUpUser(req, res)
@@ -28,7 +28,7 @@ export const signUpHandler = async (req: Request, res: Response) => {
     //console.log(encryptedPassword)
     req.body.password = encryptedPassword
     //console.log(req.body)
-    await signUpUser(req, res)
+    await signUpService(req, res)
   } catch (e: any) {
     errorResponse(res, e)
     //log.error("Error In Sign Up Controller");
