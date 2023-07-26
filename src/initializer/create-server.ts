@@ -9,7 +9,11 @@ import { log } from '../logger'
 
 var httpInterceptor = interceptor(function (req, res) {
   //console.log(res)
-  log.info(`Request Url: ${req.url}`)
+  log.info(
+    `Request url => ${req.url}, Request Method => ${
+      req.method
+    }, Time=> ${new Date()}`
+  )
   return {
     // Only Json responses will be intercepted
     isInterceptable: function () {
@@ -18,7 +22,7 @@ var httpInterceptor = interceptor(function (req, res) {
     intercept: function (body, send) {
       send(body)
 
-      log.info(`Response Object: ${body}`)
+      log.info(`Response object => ${body}`)
     }
   }
 })
@@ -29,7 +33,7 @@ const createServer = () => {
   app.use(httpInterceptor)
   dotenv.config()
   app.use(express.json())
-  app.use(LoggerMiddleware)
+  //app.use(LoggerMiddleware) //middleware working
   routes(app)
   return app
 }

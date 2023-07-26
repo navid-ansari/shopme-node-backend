@@ -1,16 +1,15 @@
 import { Request, Response } from 'express'
-//import { omit } from 'lodash'
 
 const ProductDetailsSchema = require('../../schema/product-details/ProductDetailsSchema')
 
 import { log } from '../../logger'
-
-//import { IUser } from '../../types/response/user'
+import { IProduct } from '../../types/response/product'
+import { errorResponse } from '../../lib/errors'
 
 export const productDetailsService = async (req: Request, res: Response) => {
   const id = req.params.id
   try {
-    const product = await ProductDetailsSchema.findById(id)
+    const product: IProduct = await ProductDetailsSchema.findById(id)
     if (product) {
       return res.status(200).json(product)
     }
@@ -19,6 +18,7 @@ export const productDetailsService = async (req: Request, res: Response) => {
     }
   } catch (error: any) {
     log.error(`Error in Product Details Service: ${error}`)
+    //errorResponse(res, error)
     return res.status(500).end()
   }
 }
