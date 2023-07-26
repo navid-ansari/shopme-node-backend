@@ -4,13 +4,21 @@ const localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
 const log = pino({
-  name: 'umsr',
+  name: 'shopme',
   //transport: {
   //  target: 'pino-pretty'
   //},
-  options: {
-    colorize: true
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      colorize: true,
+      colorizeObjects: true //--colorizeObjects
+      //customColors: 'err:red,info:green'
+    }
   },
+  //options: {
+  //  colorize: true
+  //},
   timestamp: () => `,"time":"${dayjs().format('llll')}"`
   //level: process.env.NODE_ENV === 'production' ? 'info' : 'debug'
 })

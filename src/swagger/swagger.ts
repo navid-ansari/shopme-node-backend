@@ -10,17 +10,17 @@ const options: SwaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'SHOPME API',
+      title: 'SHOPME API Docs',
       version
     },
     components: {
-      securitySchemas: {
+      /*securitySchemas: {
         bearerAuth: {
           type: 'http',
           schema: 'bearer',
           bearerFormat: 'JWT'
         }
-      }
+      }*/
     }
   },
   apis: ['./src/routes/routes.ts', './src/schema/*.ts']
@@ -32,8 +32,8 @@ const swaggerDocs = (app: Express, port: number) => {
   app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
   // swagger docs in json
-  app.get('api-docs.json', (req: Request, res: Response) => {
-    res.setHeader('Content-Type:', 'application/json')
+  app.get('/api-docs.json', (req: Request, res: Response) => {
+    //res.setHeader('Content-Type:', 'application/json')
     res.send(swaggerSpec)
   })
   log.info(`swagger api docs available at http://localhost:${port}/api-docs`)

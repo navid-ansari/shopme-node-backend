@@ -3,6 +3,8 @@ import { Request, Response } from 'express'
 
 const ProductDetailsSchema = require('../../schema/product-details/ProductDetailsSchema')
 
+import { log } from '../../logger'
+
 //import { IUser } from '../../types/response/user'
 
 export const productDetailsService = async (req: Request, res: Response) => {
@@ -16,6 +18,7 @@ export const productDetailsService = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'Product not found' })
     }
   } catch (error: any) {
+    log.error(`Error in Product Details Service: ${error}`)
     return res.status(500).end()
   }
 }

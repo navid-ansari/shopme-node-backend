@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { log } from '../../logger'
 //import { omit } from 'lodash'
 
 const ProductsSchema = require('../../schema/products/ProductsSchema')
@@ -12,6 +13,7 @@ export const allProductsService = async (req: Request, res: Response) => {
       return res.status(200).json(products)
     }
   } catch (error: any) {
+    log.error(`Error in Products Service: ${error}`)
     return res.status(500).end()
   }
 }
