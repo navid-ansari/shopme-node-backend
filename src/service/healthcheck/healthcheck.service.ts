@@ -12,6 +12,7 @@ export const healthcheckService = async (req: Request, res: Response) => {
     }
   } catch (error: any) {
     //console.log(error)
+    log.error(`Error in Healthcheck Service: ${error}`)
     errorResponse(res, error)
   }
 }

@@ -31,9 +31,9 @@ const validateReq =
   }
 
 const LoggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  /*log.info(
+  log.info(
     `Endpoint=> ${req.url}, Method=> ${req.method}, Time=> ${new Date()}`
-  )*/
+  )
   next()
 }
 
