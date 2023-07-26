@@ -7,6 +7,7 @@ import { viewUser } from './view/view.service'
 import { editUser } from './edit/edit.service'
 import { updateUser } from './update-user/update-user.service'
 import { deleteUser } from './delete/delete.service'
+import { rolesService } from './roles/roles.service'
 
 export {
   healthcheckService,
@@ -17,5 +18,6 @@ export {
   viewUser,
   editUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  rolesService
 }

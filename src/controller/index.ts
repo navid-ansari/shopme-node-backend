@@ -9,6 +9,7 @@ import { updateUserHandler } from './update-user/update-user.controller'
 import { deleteUserHandler } from './delete/delete.controller'
 import { allProductsController } from './all-products/all-products.controller'
 import { productDetailsController } from './product-details/product-details.controller'
+import { rolesController } from './roles/roles.controller'
 
 export {
   healthcheckController,
@@ -21,5 +22,6 @@ export {
   updateUserHandler,
   deleteUserHandler,
   allProductsController,
-  productDetailsController
+  productDetailsController,
+  rolesController
 }
