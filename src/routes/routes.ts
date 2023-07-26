@@ -14,8 +14,8 @@ import {
   allProductsController,
   productDetailsController,
   getMenuHandler,
-  signInHandler,
-  signUpHandler,
+  signInController,
+  signUpController,
   userListHandler,
   viewUserHandler,
   editUserHandler,
@@ -112,10 +112,10 @@ const routes = (app: Express) => {
   //app.post('/api/signup', validateReq(signInSchema), createSignUpHandler)
 
   // sign in
-  app.post('/api/signin', signInHandler) //validateReq(signInSchema),
+  app.post('/api/signin', signInController) //validateReq(signInSchema),
 
   // sign up
-  app.post('/api/signup', signUpHandler)
+  app.post('/api/signup', signUpController)
 
   // user list
   app.get('/api/userList', userListHandler)

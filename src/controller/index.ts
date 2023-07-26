@@ -1,7 +1,7 @@
 import { healthcheckController } from './healthcheck/healthcheck.controller'
 import { getMenuHandler } from './menu/menu.controller'
-import { signInHandler } from './sign-In/sign-In.controller'
-import { signUpHandler } from './sign-up/sign-up.controller'
+import { signInController } from './sign-In/sign-In.controller'
+import { signUpController } from './sign-up/sign-up.controller'
 import { userListHandler } from './user-list/user-list.controller'
 import { viewUserHandler } from './view/view.controller'
 import { editUserHandler } from './edit/edit.controller'
@@ -13,8 +13,8 @@ import { productDetailsController } from './product-details/product-details.cont
 export {
   healthcheckController,
   getMenuHandler,
-  signInHandler,
-  signUpHandler,
+  signInController,
+  signUpController,
   userListHandler,
   viewUserHandler,
   editUserHandler,

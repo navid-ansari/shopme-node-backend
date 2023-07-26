@@ -12,7 +12,7 @@ import { User } from '../../types/controller/user'
 import { comparePassword } from '../../util/password-hashing/compare-password'
 import { errorResponse } from '../../lib/errors'
 
-export const signInUser = async (req: Request, res: Response) => {
+export const signInService = async (req: Request, res: Response) => {
   //log.info('Sign In Service Working')
   const { email, password } = req.body
   try {

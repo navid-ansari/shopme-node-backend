@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 const UserSchema = require('../../schema/user/UserSchema')
 
-export const signUpUser = async (req: Request, res: Response) => {
+export const signUpService = async (req: Request, res: Response) => {
   const user = new UserSchema({ ...req.body })
   //console.log(user)
   try {

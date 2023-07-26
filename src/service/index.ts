@@ -1,7 +1,7 @@
 import { healthcheckService } from './healthcheck/healthcheck.service'
 import { getMenu } from './menu/menu.service'
-import { signInUser } from './sign-in/sign-in.service'
-import { signUpUser } from './sign-up/sign-up.service'
+import { signInService } from './sign-in/sign-in.service'
+import { signUpService } from './sign-up/sign-up.service'
 import { userList } from './user-list/user-list.service'
 import { viewUser } from './view/view.service'
 import { editUser } from './edit/edit.service'
@@ -11,8 +11,8 @@ import { deleteUser } from './delete/delete.service'
 export {
   healthcheckService,
   getMenu,
-  signInUser,
-  signUpUser,
+  signInService,
+  signUpService,
   userList,
   viewUser,
   editUser,
