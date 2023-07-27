@@ -77,7 +77,7 @@ const routes = (app: Express) => {
    * /api/productDetails/{id}:
    *  get:
    *     tags:
-   *     - Product details
+   *     - Product Details
    *     parameters:
    *      - in: path
    *        name: id
@@ -113,7 +113,25 @@ const routes = (app: Express) => {
   //app.post('/api/signup', validateReq(signInSchema), createSignUpHandler)
 
   // roles master
-
+  /**
+   * @openapi
+   * /api/roles:
+   *  get:
+   *     tags:
+   *     - Roles Master
+   *     description: Responds if roles master list is fetched
+   *     responses:
+   *       200:
+   *        description: Fetches roles master list
+   *        content:
+   *         application/json:
+   *          schema:
+   *           type: array
+   *           items:
+   *            $ref: '#/components/schemas/Roles'
+   *       500:
+   *        description: Internal Server Error
+   */
   app.get('/api/roles', rolesController)
 
   // sign up
@@ -198,6 +216,22 @@ const routes = (app: Express) => {
  *      description: Product not found error message
  *    example:
  *     message: Product not found
+ *   Roles:
+ *    type: object
+ *    properties:
+ *     label:
+ *      type: string
+ *      description: role label
+ *     value:
+ *      type: string
+ *      description: role value
+ *     code:
+ *      type: number
+ *      description: role code
+ *    example:
+ *     label: sample role label
+ *     value: sample role value
+ *     code: 100
  */
 
 export { routes }
