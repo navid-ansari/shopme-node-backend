@@ -135,6 +135,35 @@ const routes = (app: Express) => {
   app.get('/api/roles', rolesController)
 
   // sign up
+  /**
+   * @openapi
+   * /api/signup:
+   *  post:
+   *     tags:
+   *     - Sign Up
+   *     description: Resgister a new user
+   *     requestBody:
+   *      required: true
+   *      content:
+   *       application/json:
+   *        schema:
+   *         $ref: '#/components/schemas/SignUp'
+   *     responses:
+   *       201:
+   *        description: Creates new user
+   *        content:
+   *         application/json:
+   *          schema:
+   *           $ref: '#/components/schemas/SignUp'
+   *       422:
+   *        description: Unprocessable Entity(Username already exists)
+   *        content:
+   *         application/json:
+   *          schema:
+   *           $ref: '#/components/schemas/SignUpUsernameAlreadyExists'
+   *       500:
+   *        description: Internal Server Error
+   */
   app.post('/api/signup', signUpController)
 
   // sign in
@@ -232,6 +261,62 @@ const routes = (app: Express) => {
  *     label: sample role label
  *     value: sample role value
  *     code: 100
+ *   SignUp:
+ *    type: object
+ *    properties:
+ *     username:
+ *      type: string
+ *      description: unique username
+ *     email:
+ *      type: string
+ *      description: user email
+ *     fname:
+ *      type: string
+ *      description: first name
+ *     lname:
+ *      type: string
+ *      description: last name
+ *     dob:
+ *      type: string
+ *      description: string
+ *     password:
+ *      type: string
+ *      description: password
+ *     role:
+ *      type: object
+ *      items:
+ *       $ref: '#/components/schemas/Roles'
+ *    example:
+ *     username: sample username
+ *     email: sampleemail@gmail.com
+ *     fname: sample first name
+ *     lname: sample last name
+ *     dob: 25-10-2000
+ *     password: uniquepassword
+ *   SignUpUsernameAlreadyExists:
+ *    type: object
+ *    properties:
+ *     message:
+ *      type: string
+ *      description: username already taken
+ *     usernameExist:
+ *      type: boolean
+ *      description: flag true if username already taken
+ *    example:
+ *     message: username already exist
+ *     usernameExist: true
+ *   SignUpEmailAlreadyExists:
+ *    type: object
+ *    properties:
+ *     message:
+ *      type: string
+ *      description: email already taken
+ *     emailExist:
+ *      type: boolean
+ *      description: flag true if email already taken
+ *    example:
+ *     message: username already exist
+ *     emailExist: true
  */
 
 export { routes }
