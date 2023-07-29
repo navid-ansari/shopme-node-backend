@@ -24,7 +24,14 @@ SignInSchema.set('toJSON', {
 })
 
 // log duplicated id field in console.log() mehod
-SignInSchema.set('toObject', { virtuals: true })
+SignInSchema.set('toJSON', {
+  virtuals: true,
+  transform: function (doc, ret) {
+    ret.id = ret._id
+    delete ret._id
+    delete ret.__v
+  }
+})
 
 module.exports = mongoose.model<ISignIn>(
   'SignInModel',
