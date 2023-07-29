@@ -13,7 +13,6 @@ import { comparePassword } from '../../util/password-hashing/compare-password'
 import { errorResponse } from '../../lib/errors'
 
 export const signInService = async (req: Request, res: Response) => {
-  //log.info('Sign In Service Working')
   const { email, password } = req.body
   try {
     const user: User = await signInSchema.findOne({ email })

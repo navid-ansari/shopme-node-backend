@@ -147,14 +147,14 @@ const routes = (app: Express) => {
    *      content:
    *       application/json:
    *        schema:
-   *         $ref: '#/components/schemas/SignUp'
+   *         $ref: '#/components/schemas/User'
    *     responses:
    *       201:
    *        description: Creates new user
    *        content:
    *         application/json:
    *          schema:
-   *           $ref: '#/components/schemas/SignUp'
+   *           $ref: '#/components/schemas/User'
    *       422:
    *        description: Unprocessable Entity(Username already exists)
    *        content:
@@ -167,6 +167,49 @@ const routes = (app: Express) => {
   app.post('/api/signup', signUpController)
 
   // sign in
+  /**
+   * @openapi
+   * /api/signin:
+   *  post:
+   *     tags:
+   *     - Sign In
+   *     description: Login user
+   *     requestBody:
+   *      required: true
+   *      content:
+   *       application/json:
+   *        schema:
+   *         $ref: '#/components/schemas/SignIn'
+   *     responses:
+   *       200:
+   *        description: OK(Logs in user)
+   *        content:
+   *         application/json:
+   *          schema:
+   *           $ref: '#/components/schemas/User'
+   *       401:
+   *        description: Unauthorized(Incorrect password)
+   *        content:
+   *         application/json:
+   *          schema:
+   *           type: object
+   *           properties:
+   *            message:
+   *             type: string
+   *             example: Password is incorrect
+   *       404:
+   *        description: Not Found(Non registered user)
+   *        content:
+   *         application/json:
+   *          schema:
+   *           type: object
+   *           properties:
+   *            message:
+   *             type: string
+   *             example: User not found
+   *       500:
+   *        description: Internal Server Error
+   */
   app.post('/api/signin', signInController) //validateReq(signInSchema),
 
   // user list
@@ -261,7 +304,7 @@ const routes = (app: Express) => {
  *     label: sample role label
  *     value: sample role value
  *     code: 100
- *   SignUp:
+ *   User:
  *    type: object
  *    properties:
  *     username:
@@ -317,6 +360,16 @@ const routes = (app: Express) => {
  *    example:
  *     message: username already exist
  *     emailExist: true
+ *   SignIn:
+ *    type: object
+ *    properties:
+ *     email:
+ *      type: string
+ *     password:
+ *      type: string
+ *    example:
+ *     email: navid@gmail.com
+ *     password: NavidPass1!
  */
 
 export { routes }
