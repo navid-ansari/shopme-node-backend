@@ -2,6 +2,9 @@ import { Request, Response, Express } from 'express'
 import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUI, { SwaggerOptions } from 'swagger-ui-express'
 
+// swagger docs in ts
+import { swaggerDocumentation } from './swagger-documentation'
+
 // logger
 import { log } from '../logger'
 import { version } from '../../package.json'
@@ -29,13 +32,14 @@ const swaggerSpec = swaggerJSDoc(options)
 
 const swaggerDocs = (app: Express, port: number) => {
   // swagger page
-  app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+  //app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+  app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocumentation))
 
   // swagger docs in json
-  app.get('/api-docs.json', (req: Request, res: Response) => {
+  /*app.get('/api-docs.json', (req: Request, res: Response) => {
     //res.setHeader('Content-Type:', 'application/json')
     res.send(swaggerSpec)
-  })
+  })*/
   log.info(`swagger api docs available at http://localhost:${port}/api-docs`)
 }
 
