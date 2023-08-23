@@ -6,13 +6,13 @@ export const signUpService = async (req: Request, res: Response) => {
   const user = new UserSchema({ ...req.body })
   //console.log(user)
   try {
-    // check if username already taken
+    /*// check if username already taken
     const username = await UserSchema.findOne({ username: req.body.username })
     if (username) {
       return res
         .status(422)
         .send({ message: 'username already exist', usernameExist: true })
-    }
+    }*/
 
     // check if email already taken
     const email = await UserSchema.findOne({ email: req.body.email })
