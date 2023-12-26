@@ -21,6 +21,9 @@ app.listen(PORT, async () => {
   await connectDB()
   //await routes(app)
   await swaggerDocs(app, Number(PORT))
+  app.get('/', (req, res) => {
+    res.send('Hey this is my API running 🥳')
+  })
 })
 
 //module.exports = app
