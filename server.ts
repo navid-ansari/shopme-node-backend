@@ -14,7 +14,7 @@ import { swaggerDocs } from './src/swagger/swagger'
 
 //import { NextFunction } from 'webpack-dev-middleware'
 
-const app = createServer()
+export const app = createServer()
 const PORT = process.env.PORT || 5001
 app.listen(PORT, async () => {
   log.info(`server started on port ${PORT} with typescript`)
@@ -26,7 +26,7 @@ app.listen(PORT, async () => {
   })
 })
 
-module.exports = app
+//module.exports = app
 
 //module.exports = app
 // export { app }
