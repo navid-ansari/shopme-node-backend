@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc && node dist/server.js",
     "dev": "nodemon server.ts",
+    "build": "rimraf dist && tsc",
     "test": "jest",
     "test:coverage": "jest --coverage --coverageReporters='text-summary'",
     "test:integration": "jest --runInBand --rootDir __test__/integration",
