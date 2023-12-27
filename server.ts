@@ -26,6 +26,8 @@ app.listen(PORT, async () => {
   })
 })
 
+module.exports = app
+
 //module.exports = app
 // export { app }
 /**
