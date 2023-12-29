@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 
-const ProductDetailsSchema = require('../../schema/product-details/ProductDetailsSchema')
+//const ProductDetailsSchema = require('../../schema/product-details/ProductDetailsSchema')
+import { ProductDetailsSchema } from '../../schema/product-details/ProductDetailsSchema'
 
 import { log } from '../../logger'
 import { IProduct } from '../../types/response/product'

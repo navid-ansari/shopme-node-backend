@@ -3,7 +3,8 @@ import { log } from '../../logger'
 import { IProduct } from '../../types/response/product'
 import { errorResponse } from '../../lib/errors'
 
-const ProductsSchema = require('../../schema/products/ProductsSchema')
+//const ProductsSchema = require('../../schema/products/ProductsSchema')
+import { ProductsSchema } from '../../schema/products/ProductsSchema'
 
 export const allProductsService = async (req: Request, res: Response) => {
   try {

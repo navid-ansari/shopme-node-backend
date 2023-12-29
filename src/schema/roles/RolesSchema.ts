@@ -1,7 +1,24 @@
 import mongoose, { Schema, model, connect, Types } from 'mongoose'
 import { IRoles } from '../../types/response/roles'
 
-const RolesSchema = new Schema<IRoles>({
+// es6 way
+export const RolesSchema = mongoose.model<any>(
+  'RolesModel',
+  new mongoose.Schema({
+    label: {
+      type: String
+    },
+    value: {
+      type: String
+    },
+    code: {
+      type: Number
+    }
+  }),
+  'SHOPME_MASTER_ROLES'
+)
+
+/*const RolesSchema = new Schema<IRoles>({
   label: {
     type: String
   },
@@ -11,9 +28,9 @@ const RolesSchema = new Schema<IRoles>({
   code: {
     type: Number
   }
-})
+})*/
 
-RolesSchema.set('toJSON', {
+/*RolesSchema.set('toJSON', {
   virtuals: true,
   transform: function (doc, ret) {
     ret.id = ret._id.toHexString() // transform id to hexstring(string) from mongoose id object
@@ -28,4 +45,4 @@ module.exports = mongoose.model(
   'RolesModel',
   RolesSchema,
   'SHOPME_MASTER_ROLES'
-)
+)*/

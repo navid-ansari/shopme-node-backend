@@ -8,8 +8,8 @@ import { log } from '../../logger'
 import { IMenu } from '../../model'
 
 // schema
-const MenuSchema = require('../../schema/menu/MenuSchema')
-// import { MenuSchema } from '../../schema/menu/MenuSchema'
+//const MenuSchema = require('../../schema/menu/MenuSchema')
+import { MenuSchema } from '../../schema/menu/MenuSchema'
 
 export const getMenu = async (req: Request, res: Response) => {
   //log.info('Menu Service Working')

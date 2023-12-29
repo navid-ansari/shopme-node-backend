@@ -4,11 +4,12 @@ import { IProduct } from '../../types/response/product'
 import { errorResponse } from '../../lib/errors'
 import { IRoles } from '../../types/response/roles'
 
-const RolesSchema = require('../../schema/roles/RolesSchema')
+//const RolesSchema = require('../../schema/roles/RolesSchema')
+import { RolesSchema } from '../../schema/roles/RolesSchema'
 
 export const rolesService = async (req: Request, res: Response) => {
   try {
-    const roles: IRoles = await RolesSchema.find({}) // query mongo db
+    const roles = await RolesSchema.find({}) // query mongo db
     if (RolesSchema) {
       return res.status(200).json(roles)
     }

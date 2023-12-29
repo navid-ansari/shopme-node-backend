@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 import { omit } from 'lodash'
 
-const UserSchema = require('../../schema/user/UserSchema')
+//const UserSchema = require('../../schema/user/UserSchema')
+import { UserSchema } from '../../schema/user/UserSchema'
 
 import { IUser } from '../../types/response/user'
 

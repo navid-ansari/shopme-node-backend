@@ -5,7 +5,8 @@ import bodyParser from 'body-parser'
 import { log } from '../../logger'
 
 // schema
-const signInSchema = require('../../schema/signin/SignInSchema')
+//const signInSchema = require('../../schema/signin/SignInSchema')
+import { SignInSchema } from '../../schema/signin/SignInSchema'
 
 // model
 import { User } from '../../types/controller/user'
@@ -15,7 +16,7 @@ import { errorResponse } from '../../lib/errors'
 export const signInService = async (req: Request, res: Response) => {
   const { email, password } = req.body
   try {
-    const user: User = await signInSchema.findOne({ email })
+    const user: User = await SignInSchema.findOne({ email })
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
     }

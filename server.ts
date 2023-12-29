@@ -22,7 +22,7 @@ app.listen(PORT, async () => {
   //await routes(app)
   await swaggerDocs(app, Number(PORT))
   app.get('/', (req, res) => {
-    res.send('Hey this is my API running 🥳')
+    res.send('Shopme NodeJs Backend is up and running...')
   })
 })
 
