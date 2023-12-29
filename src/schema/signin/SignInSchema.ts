@@ -2,16 +2,30 @@ import mongoose, { Schema, model, connect, Types } from 'mongoose'
 
 import { ISignIn } from '../../model/index'
 
-const SignInSchema = new Schema<ISignIn>({
+// es6 way
+export const SignInSchema = mongoose.model<any>(
+  'SignInModel',
+  new mongoose.Schema({
+    email: {
+      type: String
+    },
+    password: {
+      type: String
+    }
+  }),
+  'SHOPME_USERS'
+)
+
+/*const SignInSchema = new Schema<ISignIn>({
   email: {
     type: String
   },
   password: {
     type: String
   }
-})
+})*/
 
-// duplicate _id to id field in model schema response
+/* // duplicate _id to id field in model schema response
 SignInSchema.virtual('id').get(function () {
   return this._id.toHexString()
 })
@@ -37,4 +51,4 @@ module.exports = mongoose.model<ISignIn>(
   'SignInModel',
   SignInSchema,
   'SHOPME_USERS'
-)
+)*/

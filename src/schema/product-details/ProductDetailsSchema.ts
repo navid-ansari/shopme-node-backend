@@ -1,6 +1,6 @@
 import mongoose, { Schema, model, connect, Types } from 'mongoose'
 
-const ProductDetailsSchema = new Schema<any>({
+/*const ProductDetailsSchema = new Schema<any>({
   title: {
     type: String
   },
@@ -24,9 +24,40 @@ const ProductDetailsSchema = new Schema<any>({
       type: Number
     }
   }
-})
+})*/
 
-// duplicate _id to id field in model schema response
+// es6 way
+export const ProductDetailsSchema = mongoose.model<any>(
+  'ProductDetailsModel',
+  new mongoose.Schema({
+    title: {
+      type: String
+    },
+    price: {
+      type: Number
+    },
+    description: {
+      type: String
+    },
+    category: {
+      type: String
+    },
+    image: {
+      type: String
+    },
+    rating: {
+      rate: {
+        type: Number
+      },
+      count: {
+        type: Number
+      }
+    }
+  }),
+  'SHOPME_ALL_PRODUCTS'
+)
+
+/*// duplicate _id to id field in model schema response
 ProductDetailsSchema.virtual('id').get(function () {
   return this._id.toHexString()
 })
@@ -45,4 +76,4 @@ module.exports = mongoose.model(
   'ProductDetailsModel',
   ProductDetailsSchema,
   'SHOPME_ALL_PRODUCTS'
-)
+)*/

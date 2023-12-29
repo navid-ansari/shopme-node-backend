@@ -3,7 +3,7 @@ import mongoose, { Schema, model, connect, Types } from 'mongoose'
 import { IMenu } from '../../model/menu.model'
 
 // es6 way: working
-/*const MenuSchema = mongoose.model<any>(
+export const MenuSchema = mongoose.model<any>(
   'MenuModel',
   new mongoose.Schema({
     menuId: {
@@ -24,10 +24,9 @@ import { IMenu } from '../../model/menu.model'
   }),
   'NAV_MENU'
 )
-export { MenuSchema }*/
 
 // module way
-const MenuSchema = new Schema<any>({
+/*const MenuSchema = new Schema<any>({
   menuId: {
     type: Number
   },
@@ -44,7 +43,7 @@ const MenuSchema = new Schema<any>({
     type: String
   }
 })
-module.exports = mongoose.model('MenuModel', MenuSchema, 'NAV_MENU')
+module.exports = mongoose.model('MenuModel', MenuSchema, 'NAV_MENU')*/
 
 // es6 way: not working
 /*const MenuSchema = new Schema<any>({

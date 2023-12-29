@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 import { log } from '../../logger'
 
-const UserSchema = require('../../schema/user/UserSchema')
+//const UserSchema = require('../../schema/user/UserSchema')
+import { UserSchema } from '../../schema/user/UserSchema'
 
 export const editUser = async (req: Request, res: Response) => {
   const id = req.query.id

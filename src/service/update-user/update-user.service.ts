@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 import { hashPassword } from '../../util/password-hashing/hash-password'
 
-const UserSchema = require('../../schema/user/UserSchema')
+//const UserSchema = require('../../schema/user/UserSchema')
+import { UserSchema } from '../../schema/user/UserSchema'
 
 export const updateUser = async (req: Request, res: Response) => {
   const id = req.params.id

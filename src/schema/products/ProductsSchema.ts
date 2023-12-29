@@ -1,6 +1,37 @@
 import mongoose, { Schema, model, connect, Types } from 'mongoose'
 
-const ProductsSchema = new Schema<any>({
+// es6 way
+export const ProductsSchema = mongoose.model<any>(
+  'ProductsModel',
+  new mongoose.Schema({
+    title: {
+      type: String
+    },
+    price: {
+      type: Number
+    },
+    description: {
+      type: String
+    },
+    category: {
+      type: String
+    },
+    image: {
+      type: String
+    },
+    rating: {
+      rate: {
+        type: Number
+      },
+      count: {
+        type: Number
+      }
+    }
+  }),
+  'SHOPME_ALL_PRODUCTS'
+)
+
+/*const ProductsSchema = new Schema<any>({
   title: {
     type: String
   },
@@ -24,13 +55,13 @@ const ProductsSchema = new Schema<any>({
       type: Number
     }
   }
-})
+})*/
 
-// duplicate _id to id field in model schema response
+// duplicate _id to id field in model schema response => do not uncomment, not using
 /*ProductsSchema.virtual('id').get(function () {
   return this._id.toHexString()
 })*/
-ProductsSchema.set('toJSON', {
+/*ProductsSchema.set('toJSON', {
   virtuals: true,
   transform: function (doc, ret) {
     ret.id = ret._id.toHexString() // transform id to hexstring(string) from mongoose id object
@@ -45,4 +76,4 @@ module.exports = mongoose.model(
   'ProductsModel',
   ProductsSchema,
   'SHOPME_ALL_PRODUCTS'
-)
+)*/
