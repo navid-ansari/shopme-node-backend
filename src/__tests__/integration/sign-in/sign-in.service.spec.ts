@@ -1,9 +1,9 @@
 const request = require('supertest')
-import { createServer } from '../../initializer/create-server'
-import { connect, closeDatabase, clearDatabase } from '../test-db-config'
+import { createServer } from '../../../initializer/create-server'
+import { connect, closeDatabase, clearDatabase } from '../../test-db-config'
 
-import { SignInSchema } from '../../schema/signin/SignInSchema'
-import { UserSchema } from '../../schema/user/UserSchema'
+import { SignInSchema } from '../../../schema/signin/SignInSchema'
+import { UserSchema } from '../../../schema/user/UserSchema'
 
 const Test_User = (override = {}) => ({
   username: 'Navid',
