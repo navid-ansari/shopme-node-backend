@@ -7,6 +7,5 @@
     "sourceMap": true,
     "outDir": "dist",
     "resolveJsonModule": true
-  },
-  "include": ["./api/*.ts"]
+  }
 }
