@@ -4,7 +4,7 @@ import { Request, Response } from 'express'
 import { signInService } from './sign-in.service'
 
 // schema
-const signInSchema = require('../../schema/signin/SignInSchema')
+import { SignInSchema } from '../../schema/signin/SignInSchema'
 
 // test fixtures
 import { UserFixture, MockedUser } from '../../adapters/user-fixture'
@@ -36,7 +36,7 @@ describe('validate sign in service', () => {
       }
     }
     const mockResponse = getMockRes()
-    signInSchema.findOne.mockResolvedValue(null)
+    jest.spyOn(SignInSchema, 'findOne').mockResolvedValue(null)
     await signInService(mockRequest as Request, mockResponse as Response)
     expect(mockResponse.status).toHaveBeenCalledWith(404)
     expect(mockResponse.json).toHaveBeenCalledWith({
@@ -55,7 +55,7 @@ describe('validate sign in service', () => {
     }
     const mockResponse = getMockRes()
     const mockedUser = MockedUser({ email, password })
-    signInSchema.findOne.mockResolvedValue(mockedUser)
+    jest.spyOn(SignInSchema, 'findOne').mockResolvedValue(mockedUser)
     mocked(comparePassword).mockResolvedValueOnce(false)
     await signInService(mockRequest as Request, mockResponse as Response)
     expect(mockResponse.status).toHaveBeenCalledWith(401)
@@ -76,7 +76,7 @@ describe('validate sign in service', () => {
     const mockResponse = getMockRes()
     const mockedUser = MockedUser({ email, password })
     const userFixture = UserFixture({ email, password })
-    signInSchema.findOne.mockResolvedValue(mockedUser)
+    jest.spyOn(SignInSchema, 'findOne').mockResolvedValue(mockedUser)
     mocked(comparePassword).mockResolvedValueOnce(true)
     await signInService(mockRequest as Request, mockResponse as Response)
     expect(mockedUser).toEqual(userFixture)

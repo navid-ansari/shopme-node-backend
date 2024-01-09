@@ -1,79 +1,33 @@
 import mongoose, { Schema, model, connect, Types } from 'mongoose'
 
-/*const ProductDetailsSchema = new Schema<any>({
-  title: {
-    type: String
-  },
-  price: {
-    type: Number
-  },
-  description: {
-    type: String
-  },
-  category: {
-    type: String
-  },
-  image: {
-    type: String
-  },
-  rating: {
-    rate: {
-      type: Number
-    },
-    count: {
-      type: Number
-    }
-  }
-})*/
-
-// es6 way
-export const ProductDetailsSchema = mongoose.model<any>(
-  'ProductDetailsModel',
-  new mongoose.Schema({
-    title: {
-      type: String
-    },
-    price: {
-      type: Number
-    },
-    description: {
-      type: String
-    },
-    category: {
-      type: String
-    },
-    image: {
-      type: String
-    },
+const schema = new Schema(
+  {
+    title: String,
+    price: Number,
+    description: String,
+    image: String,
     rating: {
-      rate: {
-        type: Number
-      },
-      count: {
-        type: Number
-      }
+      rate: Number,
+      count: Number
     }
-  }),
-  'SHOPME_ALL_PRODUCTS'
+  },
+  {
+    collection: 'SHOPME_ALL_PRODUCTS'
+  }
 )
 
-/*// duplicate _id to id field in model schema response
-ProductDetailsSchema.virtual('id').get(function () {
-  return this._id.toHexString()
-})
-ProductDetailsSchema.set('toJSON', {
+schema.set('toJSON', {
   virtuals: true,
   transform: function (doc, ret) {
-    ret.id = ret._id
-    delete ret._id
+    ret.id = ret._id.toHexString() // transform id to hexstring(string) from mongoose id object
+    delete ret._id // delete the _id property from the response
   }
 })
 
 // log duplicated id field in console.log() mehod
-ProductDetailsSchema.set('toObject', { virtuals: true })
+schema.set('toObject', { virtuals: true })
 
-module.exports = mongoose.model(
+export const ProductDetailsSchema = mongoose.model(
   'ProductDetailsModel',
-  ProductDetailsSchema,
-  'SHOPME_ALL_PRODUCTS'
-)*/
+  schema
+)

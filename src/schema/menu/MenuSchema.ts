@@ -2,66 +2,15 @@ import mongoose, { Schema, model, connect, Types } from 'mongoose'
 
 import { IMenu } from '../../model/menu.model'
 
-// es6 way: working
-export const MenuSchema = mongoose.model<any>(
-  'MenuModel',
-  new mongoose.Schema({
-    menuId: {
-      type: Number
-    },
-    menuName: {
-      type: String
-    },
-    manuLabel: {
-      type: String
-    },
-    childMenu: {
-      type: []
-    },
-    menuPath: {
-      type: String
-    }
-  }),
-  'NAV_MENU'
+const schema = new Schema<IMenu>(
+  {
+    menuId: Number,
+    menuName: String,
+    menuLabel: String,
+    childMenu: Array,
+    menuPath: String
+  },
+  { collection: 'NAV_MENU' }
 )
 
-// module way
-/*const MenuSchema = new Schema<any>({
-  menuId: {
-    type: Number
-  },
-  menuName: {
-    type: String
-  },
-  manuLabel: {
-    type: String
-  },
-  childMenu: {
-    type: []
-  },
-  menuPath: {
-    type: String
-  }
-})
-module.exports = mongoose.model('MenuModel', MenuSchema, 'NAV_MENU')*/
-
-// es6 way: not working
-/*const MenuSchema = new Schema<any>({
-  menuId: {
-    type: Number
-  },
-  menuName: {
-    type: String
-  },
-  manuLabel: {
-    type: String
-  },
-  childMenu: {
-    type: []
-  },
-  menuPath: {
-    type: String
-  }
-})
-
-export default mongoose.model<any>('MenuModel', MenuSchema, 'NAV_MENU')*/
+export const MenuSchema = mongoose.model('MenuModel', schema)

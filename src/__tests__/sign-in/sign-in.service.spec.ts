@@ -2,8 +2,8 @@ const request = require('supertest')
 import { createServer } from '../../initializer/create-server'
 import { connect, closeDatabase, clearDatabase } from '../test-db-config'
 
-const signInSchema = require('../../../src/schema/signin/SignInSchema')
-const UserSchema = require('../../../src/schema/user/UserSchema')
+import { SignInSchema } from '../../schema/signin/SignInSchema'
+import { UserSchema } from '../../schema/user/UserSchema'
 
 const Test_User = (override = {}) => ({
   username: 'Navid',
@@ -43,7 +43,7 @@ describe('Sign In api: Integration', () => {
 
     const user = new UserSchema(Test_User())
     await user.save()
-    await signInSchema.findOne({ email })
+    await SignInSchema.findOne({ email })
     const res = await request(app)
       .post('/api/signin')
       .set('Accept', 'application/json')
@@ -61,7 +61,7 @@ describe('Sign In api: Integration', () => {
 
     const user = new UserSchema(Test_User())
     await user.save()
-    await signInSchema.findOne({ email })
+    await SignInSchema.findOne({ email })
     const res = await request(app)
       .post('/api/signin')
       .set('Accept', 'application/json')
@@ -78,7 +78,7 @@ describe('Sign In api: Integration', () => {
     const password: string = 'Navideng1!'
     const user = new UserSchema(Test_User())
     await user.save()
-    await signInSchema.findOne({ email })
+    await SignInSchema.findOne({ email })
     const res = await request(app)
       .post('/api/signin')
       .set('Accept', 'application/json')
