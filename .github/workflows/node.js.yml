@@ -45,14 +45,18 @@ jobs:
         name: Create Production Build
 
       # run unit test
-      - run: npm test
+      - run: npm run test
         name: Run Unit Tests
+
+      # run integration test
+      - run: npm run integration
+        name: Run Integration Tests
 
       # generate unit test coverage
       - name: Unit Tests Coverage Report
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          test-script: npm run test:coverage
+          test-script: npm run coverage
           annotations: none
           # This will attach comment to a PR and generate markdown output.
           output: comment, report-markdown

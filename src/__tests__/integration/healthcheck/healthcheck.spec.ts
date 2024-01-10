@@ -1,5 +1,5 @@
 const request = require('supertest')
-import { createServer } from '../../initializer/create-server'
+import { createServer } from '../../../initializer/create-server'
 
 describe('Test Integration: Healthcheck', () => {
   const app = createServer()
